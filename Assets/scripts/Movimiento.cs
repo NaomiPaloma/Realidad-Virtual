@@ -23,32 +23,6 @@ public class Movimiento : MonoBehaviour
 
     void MovimientoDelPj()
     {
-        //transform.position = new Vector3(0,0,5);
-        //transform.position += new Vector3(0, 0, 5);
-
-
-        //Posicion += dirección * velocidad * fixeo de tiempo entre dispositivos
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * velocidad * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.back * velocidad * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * velocidad * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += Vector3.left * velocidad * Time.deltaTime;
-        }
-
-       
+        transform.position += (Input.GetAxisRaw("Vertical") * transform.forward + Input.GetAxisRaw("Horizontal") * transform.right).normalized * velocidad * Time.deltaTime;
     }
 }
