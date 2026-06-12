@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZonaSonido : MonoBehaviour
 {
-    public AudioClip sonido; // arrastrás el audio acá en el Inspector
+    public AudioClip sonido; 
     AudioSource audioSource;
 
     void Start()
@@ -21,7 +21,7 @@ public class ZonaSonido : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            audioSource.PlayOneShot(sonido); // reproduce el sonido una vez
+            audioSource.PlayOneShot(sonido); 
         }
     }
 }

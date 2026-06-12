@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaldosaObjetos : MonoBehaviour
 {
-    public Puerta puerta; // Arrastrás la puerta acá en el Inspector
+    public Puerta puerta; 
 
     void Start()
     {

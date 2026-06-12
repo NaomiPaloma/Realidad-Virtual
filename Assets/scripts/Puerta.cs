@@ -12,7 +12,7 @@ public class Puerta : MonoBehaviour
     void Start()
     {
         posicionCerrada = transform.position;
-        posicionAbierta = transform.position + new Vector3(0, 3, 0); // sube 3 unidades
+        posicionAbierta = transform.position + new Vector3(0, 3, 0); 
     }
 
     void Update()
