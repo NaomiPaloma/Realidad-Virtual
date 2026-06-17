@@ -1,0 +1,106 @@
+#File written by RizomUV 2023.0.70.ge90189e8. Compilation :Sep 22 2023,12:42:11
+mtllib palo blanco.mtl
+#begin vertices
+v 4.935199 9.448512 -13.11372
+v 4.935199 9.770034 -13.11372
+v 4.935199 9.448512 -13.39143
+v 4.935199 9.770034 -13.39143
+v 13.73022 9.448512 -13.11372
+v 13.73022 9.770034 -13.11372
+v 13.73022 9.448512 -13.39143
+v 13.73022 9.770034 -13.39143
+v 13.73022 9.609273 -12.98586
+v 13.73022 9.448512 -12.98586
+v 4.935199 9.448512 -12.98586
+v 4.935199 9.609273 -12.98586
+v 4.935199 9.609273 -13.05846
+v 4.935199 9.664528 -13.11372
+v 4.935199 9.625456 -13.09753
+v 13.73022 9.664528 -13.11372
+v 13.73022 9.609273 -13.05846
+v 13.73022 9.625456 -13.09753
+#end vertices
+
+#begin 24 textures vertices 
+vt 0.01324184 0.3304537 0
+vt 0.01679868 0.4339771 0
+vt 0.00390625 0.2995542 0
+vt 0.01730381 0.3902 0
+vt 0.9917957 0.03480577 0
+vt 0.9865221 0.06365255 0
+vt 0.9824601 0.00390625 0
+vt 0.9958577 0.09455207 0
+vt 0.9865221 0.1091015 0
+vt 0.990584 0.1514988 0
+vt 0.0175399 0.3446797 0
+vt 0.01743422 0.4650333 0
+vt 0.01040886 0.4128276 0
+vt 0.01325206 0.4222382 0
+vt 0.01183042 0.4175328 0
+vt 0.9918059 0.1265903 0
+vt 0.9889627 0.1171797 0
+vt 0.9903843 0.1218849 0
+vt 0.007968213 0.4047494 0
+vt 0.9959881 0.1693854 0
+vt 0.007968213 0.3593005 0
+vt 0.9953525 0.1383292 0
+vt 0.01203018 0.4471467 0
+vt 0.9960938 0.04903176 0
+#end 24 textures vertices 
+
+#begin 7 normals 
+vn -0 -1 -0
+vn -0 1 -0
+vn -0 0.9808 0.1951
+vn -0 -0 1
+vn -0 0.1951 0.9808
+vn -0 0.3827 0.9239
+vn -0 0.9239 0.3827
+#end 7 normals 
+
+#begin 8 faces
+o Cube:041
+s 1
+f 3/3/1 7/7/1 5/5/1 1/1/1 
+f 8/8/2 4/4/2 2/21/2 6/6/2 
+f 17/17/3 13/13/3 12/19/2 9/9/2 
+f 10/10/4 9/20/4 12/12/4 11/23/4 
+f 1/1/1 5/5/1 10/24/1 11/11/1 
+f 16/16/5 14/14/5 15/15/6 18/18/6 
+f 18/18/7 15/15/7 13/13/3 17/17/3 
+f 16/16/5 6/22/4 2/2/4 14/14/5 
+#end 8 faces
+
+#ZOMPROPERTIES_04{
+#ZOMPROPERTIES_04 table {Mesh table {SymPlane table {Point vector3d 0 0 0 Normal vector3d 1 0 0 Threshold double 0.01 
+#ZOMPROPERTIES_04 Enabled bool false EdgeID int -1 SymEdgeID int -1 UPos double 0.5 LocalMode bool false } RootGroup C
+#ZOMPROPERTIES_04 SubMeshGroup {Children table {Tile_0_0 CSubMeshGroup {Children table {} BBoxUV box3d 0 0 0 0 0 0 BBo
+#ZOMPROPERTIES_04 x3D box3d 0 0 0 0 0 0 Area3D double 0 AreaUV double 0.131498 IsRoot bool false Properties table {Sel
+#ZOMPROPERTIES_04 ected bool false Box box3d 0 1 0 1 0 1 U int 0 V int 0 NU int 0 NV int 0 Tiling vector3d 1 1 1 TileR
+#ZOMPROPERTIES_04 atioMode string "1:1" Overflow string "Off" Pack table {BoxFrameEdit bool false Behavior string "Fre
+#ZOMPROPERTIES_04 e" } } IsTile bool true PolyIDs ints { 3 2 6 5 7 1 0 4 } } } BBoxUV box3d 0 0 0 0 0 0 BBox3D box3d 0
+#ZOMPROPERTIES_04  0 0 0 0 0 Area3D double 0 AreaUV double 0 IsRoot bool true Properties table {Selected bool false Bo
+#ZOMPROPERTIES_04 x box3d 0 1 0 1 0 1 U int 0 V int 0 NU int 1 NV int 1 Tiling vector3d 1 1 1 TileRatioMode string "1:
+#ZOMPROPERTIES_04 1" Overflow string "Off" Pack table {Rotate table {Mode int 0 Min double 0 Max double 90 Step double
+#ZOMPROPERTIES_04  0 } PaddingSize double 0.0078125 MarginSize double 0.00390625 Resolution int 256 MapResolution int 
+#ZOMPROPERTIES_04 2048 Scaling table {TexelDensity double 1024 Mode int 2 } LayoutScalingMode int 2 MaxMutations int 1
+#ZOMPROPERTIES_04  } } IsTile bool false PolyIDs ints { } } Maps table {Pin table {PrimType string "Vertex" Size int 1
+#ZOMPROPERTIES_04  DefaultValue double 0 ScaleType string "Normalized" MergeMode string "Max" MinValue double 0 MaxVal
+#ZOMPROPERTIES_04 ue double 1 Data doubles { r 24 0 } } Density table {PrimType string "Polygon" Size int 1 DefaultVal
+#ZOMPROPERTIES_04 ue double 1 ScaleType string "Log" MergeMode string "Average" MinValue double 0.1 MaxValue double 4 
+#ZOMPROPERTIES_04 Data doubles { r 8 1 } } Protect table {PrimType string "Vertex" Size int 1 DefaultValue double 0 Sc
+#ZOMPROPERTIES_04 aleType string "Normalized" MergeMode string "Average" MinValue double -1 MaxValue double 1 Data dou
+#ZOMPROPERTIES_04 bles { r 24 0 } } } } }
+#ZOMPROPERTIES_04}
+
+
+#ZOMSCENE_01{
+#ZOMSCENE_01 CScene {Settings table {AxisSystem table {UpVector string "y" } Unit string "cm" TexelDensityDisplay
+#ZOMSCENE_01 Unit string "tx/cm" } Root table {} }
+#ZOMSCENE_01}
+
+#begin 0 fatal error vertex (that RizomUV cannot handle)
+#end 0 fatal error vertex (that RizomUV cannot handle)
+
+#begin 0 error vertex
+#end 0 error vertex
