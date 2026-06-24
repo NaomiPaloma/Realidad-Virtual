@@ -6432,7 +6432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 296107472}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HoldPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30319,10 +30319,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.042
       objectReference: {fileID: 0}
+    - target: {fileID: 7817464198838352650, guid: 318eb5c02520d044ba2db275b95681a4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8310130497577088667, guid: 318eb5c02520d044ba2db275b95681a4,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310130497577088667, guid: 318eb5c02520d044ba2db275b95681a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607744039677929340, guid: 318eb5c02520d044ba2db275b95681a4,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 503
+      objectReference: {fileID: 0}
+    - target: {fileID: 8861082432190640292, guid: 318eb5c02520d044ba2db275b95681a4,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39822,7 +39842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351646062}
   m_Layer: 0
-  m_Name: "MenuPrincipa\xF1"
+  m_Name: MenuPrincipal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45113,7 +45133,7 @@ GameObject:
   - component: {fileID: 1625555855}
   - component: {fileID: 1625555854}
   - component: {fileID: 1625555853}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Baldosa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51612,8 +51632,8 @@ Rigidbody:
   m_GameObject: {fileID: 1946349084}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 5
+  m_AngularDrag: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -55359,7 +55379,7 @@ GameObject:
   - component: {fileID: 2115874829}
   - component: {fileID: 2115874828}
   - component: {fileID: 2115874827}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaldosaPeso
   m_TagString: Untagged
   m_Icon: {fileID: 0}

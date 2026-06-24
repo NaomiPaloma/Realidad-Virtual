@@ -24,13 +24,22 @@ public class FirstPlayer : MonoBehaviour
 
         if (_rgbd == null) _rgbd = GetComponent<Rigidbody>();
 
-        // ignora colision entre Player y Objetos siempre
+        // ignora colision entre objetos y baldosas
+        Physics.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Objetos"),
+            LayerMask.NameToLayer("Baldosas"),
+            true
+        );
+
+        // ignora colision entre player y objetos
         Physics.IgnoreLayerCollision(
             LayerMask.NameToLayer("Player"),
             LayerMask.NameToLayer("Objetos"),
             true
         );
     }
+
+
 
     private void Start()
     {

@@ -41,6 +41,13 @@ public class Agarrable : MonoBehaviour
             LayerMask.NameToLayer("Player"),
             true
         );
+
+        // ignora colision con baldosas mientras sostenes el objeto
+        Physics.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Objetos"),
+            LayerMask.NameToLayer("Baldosas"),
+            true
+        );
     }
 
     public void Soltar(Vector3 posicionSuelta)
@@ -55,6 +62,13 @@ public class Agarrable : MonoBehaviour
         Physics.IgnoreLayerCollision(
             LayerMask.NameToLayer("Objetos"),
             LayerMask.NameToLayer("Player"),
+            false
+        );
+
+        // reactiva colision con baldosas al soltar
+        Physics.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Objetos"),
+            LayerMask.NameToLayer("Baldosas"),
             false
         );
     }
