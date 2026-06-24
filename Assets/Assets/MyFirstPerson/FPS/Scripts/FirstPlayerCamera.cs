@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FirstPlayerCamera : MonoBehaviour
 {
     [SerializeField] float _yMaxRotation, _yMinRotation;
+    float _yMinRotacionConObjeto = -20f; // limite cuando sostiene algo
 
     float _mouseY;
 
     Transform _playersHead;
+    bool sosteniendoObjeto = false;
+
     private void LateUpdate()
     {
         Movement();
@@ -28,8 +29,16 @@ public class FirstPlayerCamera : MonoBehaviour
     {
         _mouseY += yAxis;
 
-        _mouseY = Mathf.Clamp(_mouseY, _yMinRotation, _yMaxRotation);
+        // cambia el limite segun si sostiene o no un objeto
+        float limiteAbajo = sosteniendoObjeto ? _yMinRotacionConObjeto : _yMinRotation;
+
+        _mouseY = Mathf.Clamp(_mouseY, limiteAbajo, _yMaxRotation);
 
         transform.rotation = Quaternion.Euler(-_mouseY, xAxis, 0);
+    }
+
+    public void SetSosteniendoObjeto(bool valor)
+    {
+        sosteniendoObjeto = valor;
     }
 }

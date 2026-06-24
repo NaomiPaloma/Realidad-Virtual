@@ -24,11 +24,4 @@ public class BaldosaObjetos : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            puerta.CerrarPuerta();
-        }
-    }
 }

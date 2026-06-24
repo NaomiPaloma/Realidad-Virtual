@@ -22,7 +22,14 @@ public class FirstPlayer : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-       if(_rgbd == null) _rgbd = GetComponent<Rigidbody>();
+        if (_rgbd == null) _rgbd = GetComponent<Rigidbody>();
+
+        // ignora colision entre Player y Objetos siempre
+        Physics.IgnoreLayerCollision(
+            LayerMask.NameToLayer("Player"),
+            LayerMask.NameToLayer("Objetos"),
+            true
+        );
     }
 
     private void Start()
