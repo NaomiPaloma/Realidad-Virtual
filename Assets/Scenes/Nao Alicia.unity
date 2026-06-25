@@ -30536,6 +30536,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5819436869084022926, guid: 318eb5c02520d044ba2db275b95681a4,
+        type: 3}
+      propertyPath: _intervaloPasos
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5819436869084022926, guid: 318eb5c02520d044ba2db275b95681a4,
+        type: 3}
+      propertyPath: _sonidosPasos.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5819436869084022926, guid: 318eb5c02520d044ba2db275b95681a4,
+        type: 3}
+      propertyPath: _sonidosPasos.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cf5aebe71334c734eb5e868af463c3e2, type: 3}
     - target: {fileID: 7714841919295413687, guid: 318eb5c02520d044ba2db275b95681a4,
         type: 3}
       propertyPath: m_LocalScale.x
