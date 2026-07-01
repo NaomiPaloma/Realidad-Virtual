@@ -8,8 +8,8 @@ public class MiraPantalla : MonoBehaviour
     void OnGUI()
     {
         // Calcula el centro exacto de la pantalla
-        float xCentro = (Screen.width - tamañoMira) / 10;
-        float yCentro = (Screen.height - tamañoMira) / 10;
+        float xCentro = (Screen.width - tamañoMira) / 2;
+        float yCentro = (Screen.height - tamañoMira) / 2;
 
         // Dibuja la mira en el centro
         if (texturaMira != null)
@@ -18,7 +18,6 @@ public class MiraPantalla : MonoBehaviour
         }
         else
         {
-            // Si no le asignaste ninguna imagen en el Inspector, dibuja un cuadradito por defecto
             GUI.Box(new Rect(xCentro, yCentro, tamañoMira, tamañoMira), "");
         }
     }
