@@ -9,19 +9,11 @@ public class FirstPlayer : MonoBehaviour
     [SerializeField] float _movementSpeed;
     [SerializeField] float _mouseSensitivity;
 
-    [Header("Sonido de Pasos")]
-    [SerializeField] AudioClip[] _sonidosPasos;
-    [SerializeField] float _intervaloPasos = 0.5f;
-
     Rigidbody _rgbd;
-    AudioSource _audioSource;
     FirstPlayerCamera _myCam;
 
     float _mouseX;
     float _inputMouseX, _inputMouseY, _inputVertical, _inputHorizontal;
-
-    float _timerPasos = 0f;
-    bool _estaMoviendo = false;
 
     void Awake()
     {
@@ -29,10 +21,6 @@ public class FirstPlayer : MonoBehaviour
         Cursor.visible = false;
 
         if (_rgbd == null) _rgbd = GetComponent<Rigidbody>();
-
-        // Obtiene o agrega automáticamente el AudioSource en el mismo GameObject
-        _audioSource = GetComponent<AudioSource>();
-        if (_audioSource == null) _audioSource = gameObject.AddComponent<AudioSource>();
 
         // ignora colision entre objetos y baldosas
         Physics.IgnoreLayerCollision(
@@ -71,11 +59,6 @@ public class FirstPlayer : MonoBehaviour
         {
             Rotation(_inputMouseX, _inputMouseY);
         }
-
-        // Detecta si el jugador se está moviendo
-        _estaMoviendo = (_inputVertical != 0 || _inputHorizontal != 0);
-
-        ManejarSonidoPasos();
     }
 
     private void FixedUpdate()
@@ -84,35 +67,6 @@ public class FirstPlayer : MonoBehaviour
         {
             Movement(_inputHorizontal, _inputVertical);
         }
-    }
-
-    void ManejarSonidoPasos()
-    {
-        // Si no hay clips asignados, no hace nada
-        if (_sonidosPasos == null || _sonidosPasos.Length == 0) return;
-
-        if (_estaMoviendo)
-        {
-            _timerPasos -= Time.deltaTime;
-
-            if (_timerPasos <= 0f)
-            {
-                ReproducirPaso();
-                _timerPasos = _intervaloPasos;
-            }
-        }
-        else
-        {
-            // Resetea el timer al detenerse para que el primer paso suene de inmediato
-            _timerPasos = 0f;
-        }
-    }
-
-    void ReproducirPaso()
-    {
-        // Elige un sonido al azar del arreglo para que no suene repetitivo
-        int indice = Random.Range(0, _sonidosPasos.Length);
-        _audioSource.PlayOneShot(_sonidosPasos[indice]);
     }
 
     public void Rotation(float rotX, float rotY)
