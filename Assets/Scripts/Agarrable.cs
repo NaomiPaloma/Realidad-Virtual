@@ -2,6 +2,9 @@
 
 public class Agarrable : MonoBehaviour
 {
+    [Header("Identificación")]
+    public string colorPeso = "Rojo"; // debe escribirse igual que en la baldosa correspondiente
+
     Rigidbody rb;
     Collider col;
     Transform holdPoint;
@@ -42,7 +45,6 @@ public class Agarrable : MonoBehaviour
             true
         );
 
-        // ignora colision con baldosas mientras sostenes el objeto
         Physics.IgnoreLayerCollision(
             LayerMask.NameToLayer("Objetos"),
             LayerMask.NameToLayer("Baldosas"),
@@ -65,7 +67,6 @@ public class Agarrable : MonoBehaviour
             false
         );
 
-        // reactiva colision con baldosas al soltar
         Physics.IgnoreLayerCollision(
             LayerMask.NameToLayer("Objetos"),
             LayerMask.NameToLayer("Baldosas"),
