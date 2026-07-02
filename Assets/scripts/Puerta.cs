@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Puerta : MonoBehaviour
 {
+    [Header("Sonido de la Puerta")]
+    [Tooltip("Arrastrá acá el archivo de audio (MP3/WAV) de la puerta abriéndose")]
+    public AudioClip sonidoAbrir;
+
     Vector3 posicionCerrada;
     Vector3 posicionAbierta;
     bool abierta = false;
@@ -12,7 +16,7 @@ public class Puerta : MonoBehaviour
     void Start()
     {
         posicionCerrada = transform.position;
-        posicionAbierta = transform.position + new Vector3(0, 3, 0); 
+        posicionAbierta = transform.position + new Vector3(0, 3, 0);
     }
 
     void Update()
@@ -25,7 +29,16 @@ public class Puerta : MonoBehaviour
 
     public void AbrirPuerta()
     {
-        abierta = true;
+        // Verificamos que esté cerrada antes de abrirla para que el sonido no se repita como loco
+        if (!abierta)
+        {
+            // Reproduce el sonido si le asignaste uno en el Inspector
+            if (sonidoAbrir != null)
+            {
+                AudioSource.PlayClipAtPoint(sonidoAbrir, transform.position);
+            }
+            abierta = true;
+        }
     }
 
     public void CerrarPuerta()
@@ -33,4 +46,3 @@ public class Puerta : MonoBehaviour
         abierta = false;
     }
 }
-

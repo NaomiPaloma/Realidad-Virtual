@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InteraccionLuz : MonoBehaviour
@@ -7,22 +5,8 @@ public class InteraccionLuz : MonoBehaviour
     [Header("Luces del cuarto")]
     public Light[] luces = new Light[6];
 
-    bool enRangoLuz = false;
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        if (enRangoLuz && Input.GetKeyDown(KeyCode.E))
-        {
-            ToggleTodasLasLuces();
-        }
-    }
-
-    void ToggleTodasLasLuces()
+    // Ahora es public para que el SistemaAgarre lo pueda ejecutar al mirarlo
+    public void ToggleTodasLasLuces()
     {
         bool algunaEncendida = false;
 
@@ -40,17 +24,5 @@ public class InteraccionLuz : MonoBehaviour
             if (luz != null)
                 luz.enabled = !algunaEncendida;
         }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            enRangoLuz = true;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            enRangoLuz = false;
     }
 }
