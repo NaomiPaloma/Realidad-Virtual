@@ -57,6 +57,19 @@ public class FeedbackInteraccion : MonoBehaviour
                     textoInteraccionUI.text = textoAgarrar;
                     textoInteraccionUI.gameObject.SetActive(true);
                 }
+
+                // --- NUEVO: Detectar interacción con la E ---
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    // Buscamos si el objeto que miramos tiene el script de Cofre
+                    Cofre cofreEncontrado = hit.collider.GetComponent<Cofre>();
+                    if (cofreEncontrado != null)
+                    {
+                        cofreEncontrado.Interactuar();
+                    }
+                }
+                // ---------------------------------------------
+
                 return;
             }
         }
@@ -78,19 +91,17 @@ public class FeedbackInteraccion : MonoBehaviour
         }
     }
 
-    // --- NUEVAS FUNCIONES DE TRANSPARENCIA ---
-
     void MostrarOutline(Outline outl)
     {
         Color c = outl.OutlineColor;
-        c.a = 1f; // 100% Visible
+        c.a = 1f;
         outl.OutlineColor = c;
     }
 
     void OcultarOutline(Outline outl)
     {
         Color c = outl.OutlineColor;
-        c.a = 0f; // 100% Transparente (Invisible)
+        c.a = 0f;
         outl.OutlineColor = c;
     }
 }
