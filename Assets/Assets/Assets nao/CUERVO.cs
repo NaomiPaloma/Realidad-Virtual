@@ -1,141 +1,104 @@
 using UnityEngine;
 using System.Collections;
 
-// Script para hacer que un loro reaccione al interactuar:
-// reproduce un sonido y muestra/dice una frase.
+// El loro reacciona cuando el jugador esta dentro de su Box Collider
+// (Is Trigger) y presiona una tecla para interactuar.
 //
 // SETUP EN UNITY:
 // 1. Arrastrar este script al prefab del loro.
-// 2. Asegurarse de que el loro tenga un Collider (marcarlo como
-//    "Is Trigger" si se va a usar el modo de cercania + tecla).
-// 3. Asignar un AudioClip en el campo "sonidoLoro".
-// 4. Escribir la frase deseada en el campo "frase".
-// 5. Elegir el modo de interaccion en "modoInteraccion" (Click o CercaniaConTecla).
-// 6. (Opcional) Asignar un TextMeshPro / Text en "globoDialogo" si se quiere
-//    que la frase se muestre en un globo de dialogo en vez de solo en consola.
+// 2. El loro necesita un Box Collider con "Is Trigger" tildado.
+// 3. El jugador necesita:
+//    - Un Collider (cualquier tipo)
+//    - Un Rigidbody (puede ser Is Kinematic = true)
+//    - El Tag "Player" puesto en el Inspector
+// 4. Asignar el AudioClip en "sonidoLoro".
+// 5. Escribir la frase en "frase".
+// 6. (Opcional) Asignar un Text/TextMeshProUGUI en "textoFrase" para que
+//    la frase se vea en pantalla. Si no se asigna nada, la frase igual
+//    aparece en la consola (Window > General > Console).
 
 [RequireComponent(typeof(AudioSource))]
 public class ParrotInteraction : MonoBehaviour
 {
-    public enum ModoInteraccion { Click, CercaniaConTecla }
-
     [Header("Contenido")]
-    [Tooltip("Sonido que hace el loro (graznido, etc.)")]
     public AudioClip sonidoLoro;
 
-    [Tooltip("Frase que dice el loro")]
     [TextArea]
     public string frase = "Polly quiere una galleta!";
 
-    [Header("Configuracion de interaccion")]
-    public ModoInteraccion modoInteraccion = ModoInteraccion.Click;
-
-    [Tooltip("Solo si el modo es CercaniaConTecla: tecla para interactuar")]
+    [Header("Interaccion")]
     public KeyCode teclaInteraccion = KeyCode.E;
 
     [Header("UI opcional")]
-    [Tooltip("Objeto con un Text o TextMeshProUGUI para mostrar la frase (opcional)")]
-    public GameObject globoDialogo;
-    public float duracionGlobo = 3f;
-
-    [Header("Animacion opcional")]
-    [Tooltip("Nombre del trigger en el Animator para animar al loro al hablar (opcional)")]
-    public string triggerAnimacion = "Hablar";
+    [Tooltip("Objeto de texto (Text o TextMeshProUGUI) donde se muestra la frase")]
+    public GameObject textoFrase;
+    public float duracionFrase = 3f;
 
     private AudioSource audioSource;
-    private Animator animator;
-    private bool jugadorCerca = false;
-    private bool interactuando = false;
+    private bool jugadorDentro = false;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>(); // puede ser null, esta OK
 
-        if (globoDialogo != null)
-            globoDialogo.SetActive(false);
+        if (textoFrase != null)
+            textoFrase.SetActive(false);
     }
 
-    void Update()
-    {
-        if (modoInteraccion == ModoInteraccion.CercaniaConTecla &&
-            jugadorCerca &&
-            Input.GetKeyDown(teclaInteraccion) &&
-            !interactuando)
-        {
-            Interactuar();
-        }
-    }
-
-    // Se usa si el modo es Click y el loro tiene un Collider (no trigger)
-    void OnMouseDown()
-    {
-        if (modoInteraccion == ModoInteraccion.Click && !interactuando)
-        {
-            Interactuar();
-        }
-    }
-
-    // Se usa si el modo es CercaniaConTecla y el Collider esta marcado como Trigger
     void OnTriggerEnter(Collider other)
     {
-        if (modoInteraccion == ModoInteraccion.CercaniaConTecla && other.CompareTag("Player"))
-        {
-            jugadorCerca = true;
-        }
+        if (other.CompareTag("Player"))
+            jugadorDentro = true;
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (modoInteraccion == ModoInteraccion.CercaniaConTecla && other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
+            jugadorDentro = false;
+    }
+
+    void Update()
+    {
+        if (jugadorDentro && Input.GetKeyDown(teclaInteraccion))
         {
-            jugadorCerca = false;
+            Interactuar();
         }
     }
 
     private void Interactuar()
     {
-        StartCoroutine(SecuenciaInteraccion());
-    }
-
-    private IEnumerator SecuenciaInteraccion()
-    {
-        interactuando = true;
-
         // Sonido
         if (sonidoLoro != null && audioSource != null)
         {
             audioSource.PlayOneShot(sonidoLoro);
         }
 
-        // Animacion (si existe Animator y trigger configurado)
-        if (animator != null && !string.IsNullOrEmpty(triggerAnimacion))
-        {
-            animator.SetTrigger(triggerAnimacion);
-        }
-
-        // Frase por consola (siempre)
+        // Frase en consola
         Debug.Log("[Loro dice]: " + frase);
 
-        // Frase en UI (si hay globo asignado)
-        if (globoDialogo != null)
+        // Frase en pantalla (si hay UI asignada)
+        if (textoFrase != null)
         {
-            var texto = globoDialogo.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-            if (texto != null)
-            {
-                texto.text = frase;
-            }
-            else
-            {
-                var textoUI = globoDialogo.GetComponentInChildren<UnityEngine.UI.Text>();
-                if (textoUI != null) textoUI.text = frase;
-            }
+            StopAllCoroutines();
+            StartCoroutine(MostrarFrase());
+        }
+    }
 
-            globoDialogo.SetActive(true);
-            yield return new WaitForSeconds(duracionGlobo);
-            globoDialogo.SetActive(false);
+    private IEnumerator MostrarFrase()
+    {
+        var tmp = textoFrase.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        if (tmp != null)
+        {
+            tmp.text = frase;
+        }
+        else
+        {
+            var textoUI = textoFrase.GetComponentInChildren<UnityEngine.UI.Text>();
+            if (textoUI != null) textoUI.text = frase;
         }
 
-        interactuando = false;
+        textoFrase.SetActive(true);
+        yield return new WaitForSeconds(duracionFrase);
+        textoFrase.SetActive(false);
     }
 } 
