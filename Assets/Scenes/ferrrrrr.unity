@@ -1283,7 +1283,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 565084604}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cd7751c228f80e142b0ff27e34df1fd9,
         type: 3}
@@ -1303,17 +1303,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cd7751c228f80e142b0ff27e34df1fd9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.657297
+      value: -32.30304
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd7751c228f80e142b0ff27e34df1fd9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7666615
+      value: 7.476079
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd7751c228f80e142b0ff27e34df1fd9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.046135
+      value: -10.411495
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd7751c228f80e142b0ff27e34df1fd9,
         type: 3}
@@ -24398,6 +24398,8 @@ Transform:
   - {fileID: 690234539}
   - {fileID: 1445088677}
   - {fileID: 343950302}
+  - {fileID: 808562605}
+  - {fileID: 55924392}
   m_Father: {fileID: 214539138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &579272522 stripped
@@ -30216,12 +30218,12 @@ Transform:
   m_GameObject: {fileID: 808562604}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.651995, y: -0.5669999, z: -1.6910038}
+  m_LocalPosition: {x: -32.297737, y: 7.6757407, z: -10.056364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 116877196}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 565084604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &808562606
 MonoBehaviour:
@@ -134234,5 +134236,3 @@ SceneRoots:
   - {fileID: 1844557161}
   - {fileID: 432884888}
   - {fileID: 2046478770}
-  - {fileID: 808562605}
-  - {fileID: 57150078}
