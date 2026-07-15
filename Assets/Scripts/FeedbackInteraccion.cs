@@ -58,17 +58,24 @@ public class FeedbackInteraccion : MonoBehaviour
                     textoInteraccionUI.gameObject.SetActive(true);
                 }
 
-                // --- NUEVO: Detectar interacción con la E ---
+                // --- SISTEMA UNIFICADO DE INTERACCIÓN ---
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    // Buscamos si el objeto que miramos tiene el script de Cofre
+                    // 1. Preguntamos si miramos un Cofre
                     Cofre cofreEncontrado = hit.collider.GetComponent<Cofre>();
                     if (cofreEncontrado != null)
                     {
                         cofreEncontrado.Interactuar();
                     }
+
+                    // 2. Preguntamos si miramos un Cuervo
+                    CuervoSonido cuervoEncontrado = hit.collider.GetComponent<CuervoSonido>();
+                    if (cuervoEncontrado != null)
+                    {
+                        cuervoEncontrado.HacerRuido();
+                    }
                 }
-                // ---------------------------------------------
+                // ----------------------------------------
 
                 return;
             }
