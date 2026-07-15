@@ -54,8 +54,20 @@ public class FeedbackInteraccion : MonoBehaviour
 
                 if (textoInteraccionUI != null)
                 {
-                    textoInteraccionUI.text = textoAgarrar;
-                    textoInteraccionUI.gameObject.SetActive(true);
+                    // Chequeamos si el panel del cuadro está abierto en este momento
+                    bool leyendoCuadro = PaintingInteractionUI.Instancia != null && PaintingInteractionUI.Instancia.panelInfo.activeSelf;
+
+                    if (leyendoCuadro)
+                    {
+                        // Si estamos leyendo, apagamos el cartel de [E] Interactuar para que no moleste
+                        textoInteraccionUI.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        // Si el panel está cerrado, mostramos el [E] Interactuar normal
+                        textoInteraccionUI.text = textoAgarrar;
+                        textoInteraccionUI.gameObject.SetActive(true);
+                    }
                 }
 
                 // --- SISTEMA UNIFICADO DE INTERACCIÓN ---
@@ -63,16 +75,17 @@ public class FeedbackInteraccion : MonoBehaviour
                 {
                     // 1. Preguntamos si miramos un Interruptor del Puzzle
                     InterruptorPuzzle interruptor = hit.collider.GetComponent<InterruptorPuzzle>();
-                    if (interruptor != null)
-                    {
-                        interruptor.Interactuar();
-                    }
+                    if (interruptor != null) interruptor.Interactuar();
 
                     // 2. Preguntamos si miramos un Cuervo
-                    CuervoSonido cuervoEncontrado = hit.collider.GetComponent<CuervoSonido>();
-                    if (cuervoEncontrado != null)
+                    CuervoSonido cuervo = hit.collider.GetComponent<CuervoSonido>();
+                    if (cuervo != null) cuervo.HacerRuido();
+
+                    // 3. Preguntamos si miramos un Cuadro (NUEVO)
+                    PaintingInfo cuadro = hit.collider.GetComponentInParent<PaintingInfo>();
+                    if (cuadro != null && PaintingInteractionUI.Instancia != null)
                     {
-                        cuervoEncontrado.HacerRuido();
+                        PaintingInteractionUI.Instancia.AlternarCuadro(cuadro);
                     }
                 }
                 // ----------------------------------------
@@ -95,6 +108,12 @@ public class FeedbackInteraccion : MonoBehaviour
         if (textoInteraccionUI != null)
         {
             textoInteraccionUI.gameObject.SetActive(false);
+        }
+
+        // Si dejamos de mirar cualquier cosa interactuable, cerramos el panel del cuadro (NUEVO)
+        if (PaintingInteractionUI.Instancia != null)
+        {
+            PaintingInteractionUI.Instancia.CerrarPanel();
         }
     }
 
