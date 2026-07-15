@@ -3,8 +3,8 @@ using UnityEngine;
 public class ObjetoFlotante : MonoBehaviour
 {
     [Header("Configuración de Vuelo")]
-    public float velocidadFlotacion = 2f; // Qué tan rápido sube y baja
-    public float alturaFlotacion = 0.5f;  // Qué tan alto llega
+    public float velocidadFlotacion = 2f;
+    public float alturaFlotacion = 0.5f;
 
     [Header("Efectos")]
     public AudioClip sonidoMagico;
@@ -13,26 +13,37 @@ public class ObjetoFlotante : MonoBehaviour
     private Vector3 posicionInicial;
     private bool estaFlotando = false;
 
+    // Nuestro propio cronómetro interno
+    private float tiempoActual = 0f;
+
     void Start()
     {
-        // Guardamos dónde estaba el objeto originalmente para que vuelva ahí al apagar la luz
         posicionInicial = transform.position;
 
-        // Configuramos el AudioSource
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
         audioSource.playOnAwake = false;
+
+        if (sonidoMagico != null)
+        {
+            audioSource.clip = sonidoMagico;
+            audioSource.loop = true;
+        }
     }
 
     void Update()
     {
         if (estaFlotando)
         {
-            // Calcula la nueva posición en Y usando un movimiento de onda suave
-            float nuevaY = posicionInicial.y + Mathf.Sin(Time.time * velocidadFlotacion) * alturaFlotacion;
+            // El cronómetro avanza solo cuando está flotando
+            tiempoActual += Time.deltaTime;
+
+            // Usamos nuestro cronómetro en vez del reloj global
+            float nuevaY = posicionInicial.y + Mathf.Sin(tiempoActual * velocidadFlotacion) * alturaFlotacion;
             transform.position = new Vector3(transform.position.x, nuevaY, transform.position.z);
         }
     }
@@ -43,16 +54,19 @@ public class ObjetoFlotante : MonoBehaviour
 
         if (encender)
         {
-            // Reproduce el sonido mágico al empezar a flotar
-            if (sonidoMagico != null)
+            // ¡CLAVE! Reseteamos el cronómetro a 0.
+            // Esto garantiza que el movimiento arranque al instante y sin demoras.
+            tiempoActual = 0f;
+
+            if (audioSource.clip != null)
             {
-                audioSource.PlayOneShot(sonidoMagico);
+                audioSource.Play();
             }
         }
         else
         {
-            // Lo devuelve suavemente a su posición original al apagar la luz
             transform.position = posicionInicial;
+            audioSource.Stop();
         }
     }
 }
