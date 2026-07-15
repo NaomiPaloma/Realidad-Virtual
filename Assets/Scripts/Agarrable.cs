@@ -73,4 +73,21 @@ public class Agarrable : MonoBehaviour
             false
         );
     }
+
+    // NUEVO: Para bloquearlo dentro del cofre
+    // NUEVO: Para bloquearlo dentro del cofre
+    public void BloquearInteraccion(bool bloquear)
+    {
+        if (col == null) col = GetComponent<Collider>();
+        if (rb == null) rb = GetComponent<Rigidbody>(); // Buscamos las físicas
+
+        if (col != null) col.enabled = !bloquear; // Apaga o prende las colisiones
+
+        // ¡LA CLAVE! Si está bloqueado, activamos isKinematic para que no se caiga por el piso
+        if (rb != null) rb.isKinematic = bloquear;
+
+        // Apaga el Outline si lo tiene para que no brille a través del cofre
+        Outline outline = GetComponent<Outline>();
+        if (outline != null) outline.enabled = !bloquear;
+    }
 }

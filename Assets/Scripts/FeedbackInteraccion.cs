@@ -61,11 +61,11 @@ public class FeedbackInteraccion : MonoBehaviour
                 // --- SISTEMA UNIFICADO DE INTERACCIÓN ---
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    // 1. Preguntamos si miramos un Cofre
-                    Cofre cofreEncontrado = hit.collider.GetComponent<Cofre>();
-                    if (cofreEncontrado != null)
+                    // 1. Preguntamos si miramos un Interruptor del Puzzle
+                    InterruptorPuzzle interruptor = hit.collider.GetComponent<InterruptorPuzzle>();
+                    if (interruptor != null)
                     {
-                        cofreEncontrado.Interactuar();
+                        interruptor.Interactuar();
                     }
 
                     // 2. Preguntamos si miramos un Cuervo

@@ -3,11 +3,13 @@ using UnityEngine;
 public class Cofre : MonoBehaviour
 {
     [Header("Partes del Cofre")]
-    public Transform tapa; // Arrastrá acá el objeto de la tapa
+    public Transform tapa;
+    public float anguloAbierto = -90f;
+    public float velocidadApertura = 5f;
 
-    [Header("Configuración de Rotación")]
-    public float anguloAbierto = -90f; // Ángulo de apertura (puede ser 90 positivo dependiendo de tu modelo 3D)
-    public float velocidadApertura = 5f; // Qué tan rápido se abre
+    [Header("Contenido del Cofre")]
+    [Tooltip("Arrastrá acá el cubo que está adentro del cofre")]
+    public Agarrable cuboAdentro;
 
     private bool estaAbierto = false;
     private Quaternion rotacionCerrada;
@@ -17,11 +19,14 @@ public class Cofre : MonoBehaviour
     {
         if (tapa != null)
         {
-            // Guardamos la rotación inicial como la "cerrada"
             rotacionCerrada = tapa.localRotation;
-
-            // Calculamos la rotación "abierta" modificando solo el eje X (el eje clásico de bisagras)
             rotacionAbierta = Quaternion.Euler(anguloAbierto, tapa.localEulerAngles.y, tapa.localEulerAngles.z);
+        }
+
+        // Bloqueamos el cubo al iniciar para que no se pueda interactuar
+        if (cuboAdentro != null)
+        {
+            cuboAdentro.BloquearInteraccion(true);
         }
     }
 
@@ -29,16 +34,20 @@ public class Cofre : MonoBehaviour
     {
         if (tapa != null)
         {
-            // Elegimos hacia dónde tiene que ir la tapa según su estado
             Quaternion rotacionObjetivo = estaAbierto ? rotacionAbierta : rotacionCerrada;
-
-            // Lerp rota la tapa de a poco hasta llegar al objetivo
             tapa.localRotation = Quaternion.Lerp(tapa.localRotation, rotacionObjetivo, Time.deltaTime * velocidadApertura);
         }
     }
 
-    public void Interactuar()
+    // Esta función ya no la llama el jugador con la 'E', la llama el Puzzle
+    public void AbrirCofre()
     {
-        estaAbierto = !estaAbierto; // Cambia el estado (si estaba cerrado lo abre, y viceversa)
+        estaAbierto = true;
+
+        // Habilitamos el cubo para que vuelva a ser interactivo
+        if (cuboAdentro != null)
+        {
+            cuboAdentro.BloquearInteraccion(false);
+        }
     }
 }
