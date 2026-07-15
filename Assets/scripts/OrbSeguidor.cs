@@ -3,12 +3,13 @@ using UnityEngine;
 /// <summary>
 /// Colocar este script en el GameObject del orbe.
 ///
-/// El orbe detecta por su cuenta (con Raycast, igual que el jugador)
-/// si hay algo interactuable cerca. Cuando eso pasa Y el jugador está
-/// dentro de la zona de la habitación asignada, el orbe lo empieza a
-/// seguir y cambia a un material con emisión (brillo). Si el jugador
-/// sale de la habitación, o deja de haber algo para interactuar,
-/// el orbe deja de seguirlo y vuelve a su material normal.
+/// El orbe se queda quieto (en reposo) hasta que el jugador presiona
+/// la tecla de activación (E por defecto) estando cerca de algo
+/// interactuable. Recién ahí el orbe empieza a seguirlo, y cambia a
+/// un material con emisión (brillo). Si el jugador sale de la
+/// habitación asignada, el orbe deja de seguirlo, vuelve a su punto
+/// de reposo y recupera el material normal (hace falta volver a
+/// presionar la tecla para reactivarlo).
 ///
 /// Es completamente independiente de cualquier otro sistema (cuadros, etc).
 /// Solo necesita que los objetos interactuables tengan un Collider y
@@ -54,8 +55,13 @@ public class OrbSeguidor : MonoBehaviour
     [Tooltip("Material con emisión, usado cuando el jugador puede interactuar")]
     public Material materialEmision;
 
+    [Header("Tecla de activación")]
+    [Tooltip("Tecla que el jugador presiona para activar el seguimiento del orbe")]
+    public KeyCode teclaActivar = KeyCode.E;
+
     private Renderer orbRenderer;
     private bool siguiendoActualmente;
+    private bool activadoPorJugador;
     private Vector3 puntoDeReposo;
 
     void Awake()
@@ -74,7 +80,19 @@ public class OrbSeguidor : MonoBehaviour
 
         bool hayAlgoInteractuable = DetectarInteractuable();
 
-        bool debeSeguir = dentroDeLaHabitacion && hayAlgoInteractuable;
+        // Se activa al presionar la tecla mientras hay algo interactuable enfrente
+        if (Input.GetKeyDown(teclaActivar) && hayAlgoInteractuable && dentroDeLaHabitacion)
+        {
+            activadoPorJugador = true;
+        }
+
+        // Si el jugador sale de la habitación, se reinicia (necesita volver a presionar la tecla)
+        if (!dentroDeLaHabitacion)
+        {
+            activadoPorJugador = false;
+        }
+
+        bool debeSeguir = activadoPorJugador && dentroDeLaHabitacion;
 
         MoverOrbe(debeSeguir);
         ActualizarMaterial(debeSeguir);
