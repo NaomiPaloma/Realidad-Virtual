@@ -357,9 +357,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 800150799}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9780299
@@ -409,8 +409,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3153,6 +3153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   luces:
   - {fileID: 671610313}
+  objetosQueFlotan: []
 --- !u!65 &74583407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19610,6 +19611,7 @@ MonoBehaviour:
   - {fileID: 743470468}
   - {fileID: 356767712}
   - {fileID: 1391609048}
+  objetosQueFlotan: []
 --- !u!65 &558981851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27018,8 +27020,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01359538, y: 0.0142010925, z: 0.012499994}
-  m_Center: {x: -0.00066204485, y: 0.0027336797, z: 0.0009844791}
+  m_Size: {x: 0.022202712, y: 0.0142010925, z: 0.023492562}
+  m_Center: {x: -0.0019645123, y: 0.0027336797, z: 0.0002597053}
 --- !u!114 &736251194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27032,7 +27034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33bfe79e02b4524cb9c4dde521f37fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonidoLoro: {fileID: 0}
+  sonidoLoro: {fileID: 8300000, guid: 458125ac74d90d04f98e867625284289, type: 3}
   frase: Este lugar se me hace muy conocido...
   teclaInteraccion: 101
   textoFrase: {fileID: 9780297}
@@ -27047,8 +27049,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 44754f14dac4e2343aba0ed292e20c78, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 458125ac74d90d04f98e867625284289, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -32478,6 +32480,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  objetosQueFlotan: []
 --- !u!65 &935657447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35947,32 +35950,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fd06eb3c30b6fab45a0afa3ac68c0637,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 58.130444
+      value: 110.02349
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd06eb3c30b6fab45a0afa3ac68c0637,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 58.130432
+      value: 110.02347
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd06eb3c30b6fab45a0afa3ac68c0637,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 58.130444
+      value: 110.02349
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd06eb3c30b6fab45a0afa3ac68c0637,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.3127947
+      value: -3.301
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd06eb3c30b6fab45a0afa3ac68c0637,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.518729
+      value: 13.679
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd06eb3c30b6fab45a0afa3ac68c0637,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.244617
+      value: 27.231
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd06eb3c30b6fab45a0afa3ac68c0637,
         type: 3}
@@ -100950,6 +100953,7 @@ MonoBehaviour:
   - {fileID: 283247939}
   - {fileID: 1938370107}
   - {fileID: 1309689242}
+  objetosQueFlotan: []
 --- !u!65 &1076192955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -103447,6 +103451,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  objetosQueFlotan: []
 --- !u!65 &1130648193
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -104947,6 +104952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   luces:
   - {fileID: 2074228533}
+  objetosQueFlotan: []
 --- !u!114 &1216756218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113042,32 +113048,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2fe21c09cbbb9e24fac9f94230168ef6,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.18387564
+      value: 0.30414867
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fe21c09cbbb9e24fac9f94230168ef6,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.18387564
+      value: 0.30414867
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fe21c09cbbb9e24fac9f94230168ef6,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.18387564
+      value: 0.30414867
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fe21c09cbbb9e24fac9f94230168ef6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.538
+      value: -5.3396
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fe21c09cbbb9e24fac9f94230168ef6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.53673
+      value: 10.401
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fe21c09cbbb9e24fac9f94230168ef6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.455
+      value: 24.233
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2fe21c09cbbb9e24fac9f94230168ef6,
         type: 3}
@@ -114223,6 +114229,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  objetosQueFlotan: []
 --- !u!65 &1454940760
 BoxCollider:
   m_ObjectHideFlags: 0
