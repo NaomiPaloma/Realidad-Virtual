@@ -13,14 +13,40 @@ public class InteraccionLuz : MonoBehaviour
     public AudioClip sonidoEncendido;
     public AudioClip sonidoApagado;
 
+    [Header("Animación de Perilla")]
+    public Transform perillaInterruptor; 
+    public Vector3 rotacionApagado = new Vector3(-105f, 0f, 0f); 
+    public Vector3 rotacionEncendido = new Vector3(-75f, 0f, 0f); 
+
+    [Header("Emisivo del Farol")]
+    public Renderer farolRenderer; // Arrastrá el modelo 3D del farol acá
+    public int indiceMaterial = 0; // Dejalo en 0 si el farol tiene un solo material
+    
+    // [ColorUsage(true, true)] permite elegir colores HDR (que tienen intensidad de brillo)
+    [ColorUsage(true, true)] public Color colorEmisionPrendido = Color.white; 
+    [ColorUsage(true, true)] public Color colorEmisionApagado = Color.black; 
+
     AudioSource audioSource;
+    Material materialFarol;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (perillaInterruptor != null)
+        {
+            perillaInterruptor.localEulerAngles = rotacionApagado;
+        }
+
+        // Clonamos el material del farol para poder modificarlo sin afectar al resto del juego
+        if (farolRenderer != null)
+        {
+            materialFarol = farolRenderer.materials[indiceMaterial];
+            materialFarol.EnableKeyword("_EMISSION"); // Nos aseguramos de que la emisión esté activada
+            materialFarol.SetColor("_EmissionColor", colorEmisionApagado); // Arranca apagado
+        }
     }
 
-    // Ahora es public para que el SistemaAgarre lo pueda ejecutar al mirarlo
     public void ToggleTodasLasLuces()
     {
         bool algunaEncendida = false;
@@ -33,7 +59,6 @@ public class InteraccionLuz : MonoBehaviour
             }
         }
 
-        // Determinamos el nuevo estado (si había alguna prendida, las apagamos. Si no, las prendemos)
         bool nuevoEstado = !algunaEncendida;
         foreach (Light luz in luces)
         {
@@ -41,7 +66,6 @@ public class InteraccionLuz : MonoBehaviour
                 luz.enabled = nuevoEstado;
         }
 
-        // Le avisamos a todos los objetos mágicos que empiecen a flotar (o dejen de hacerlo)
         foreach (ObjetoFlotante obj in objetosQueFlotan)
         {
             if (obj != null)
@@ -50,8 +74,19 @@ public class InteraccionLuz : MonoBehaviour
             }
         }
 
-        // Reproducimos el sonido correspondiente según el nuevo estado
         ReproducirSonido(nuevoEstado);
+
+        if (perillaInterruptor != null)
+        {
+            perillaInterruptor.localEulerAngles = nuevoEstado ? rotacionEncendido : rotacionApagado;
+        }
+
+        // --- NUEVO: Cambiar el emisivo del farol ---
+        if (materialFarol != null)
+        {
+            Color colorDestino = nuevoEstado ? colorEmisionPrendido : colorEmisionApagado;
+            materialFarol.SetColor("_EmissionColor", colorDestino);
+        }
     }
 
     void ReproducirSonido(bool encendiendo)
