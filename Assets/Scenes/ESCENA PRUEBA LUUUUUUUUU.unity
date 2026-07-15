@@ -3012,6 +3012,13 @@ MonoBehaviour:
   objetosQueFlotan: []
   sonidoEncendido: {fileID: 0}
   sonidoApagado: {fileID: 0}
+  perillaInterruptor: {fileID: 0}
+  rotacionApagado: {x: -105, y: 0, z: 0}
+  rotacionEncendido: {x: -75, y: 0, z: 0}
+  farolRenderer: {fileID: 0}
+  indiceMaterial: 0
+  colorEmisionPrendido: {r: 1, g: 1, b: 1, a: 1}
+  colorEmisionApagado: {r: 0, g: 0, b: 0, a: 1}
 --- !u!65 &74583407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14597,6 +14604,7 @@ Transform:
   - {fileID: 1140231171}
   - {fileID: 256281225}
   - {fileID: 1624852416}
+  - {fileID: 942659666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &482011218
@@ -18034,6 +18042,13 @@ MonoBehaviour:
   objetosQueFlotan: []
   sonidoEncendido: {fileID: 0}
   sonidoApagado: {fileID: 0}
+  perillaInterruptor: {fileID: 0}
+  rotacionApagado: {x: -105, y: 0, z: 0}
+  rotacionEncendido: {x: -75, y: 0, z: 0}
+  farolRenderer: {fileID: 0}
+  indiceMaterial: 0
+  colorEmisionPrendido: {r: 1, g: 1, b: 1, a: 1}
+  colorEmisionApagado: {r: 0, g: 0, b: 0, a: 1}
 --- !u!65 &558981851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25748,7 +25763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sonidoCuervo: {fileID: 0}
-  distanciaInteraccion: 3
 --- !u!82 &736251195
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31238,6 +31252,13 @@ MonoBehaviour:
   - {fileID: 1995169378}
   sonidoEncendido: {fileID: 8300000, guid: e07f747b74f059e488c87fa97e401077, type: 3}
   sonidoApagado: {fileID: 8300000, guid: e07f747b74f059e488c87fa97e401077, type: 3}
+  perillaInterruptor: {fileID: 0}
+  rotacionApagado: {x: -105, y: 0, z: 0}
+  rotacionEncendido: {x: -75, y: 0, z: 0}
+  farolRenderer: {fileID: 0}
+  indiceMaterial: 0
+  colorEmisionPrendido: {r: 1, g: 1, b: 1, a: 1}
+  colorEmisionApagado: {r: 0, g: 0, b: 0, a: 1}
 --- !u!65 &935657447
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33048,6 +33069,12 @@ MonoBehaviour:
     type: 3}
   materialEmision: {fileID: 2100000, guid: e2f374d653124bb4680e7e8f5df8409e, type: 2}
   teclaActivar: 101
+--- !u!4 &942659666 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 01bb2e6b9d58dd442b8eb7d9aecadae3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1662983340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &943356101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99858,6 +99885,13 @@ MonoBehaviour:
   objetosQueFlotan: []
   sonidoEncendido: {fileID: 0}
   sonidoApagado: {fileID: 0}
+  perillaInterruptor: {fileID: 0}
+  rotacionApagado: {x: -105, y: 0, z: 0}
+  rotacionEncendido: {x: -75, y: 0, z: 0}
+  farolRenderer: {fileID: 0}
+  indiceMaterial: 0
+  colorEmisionPrendido: {r: 1, g: 1, b: 1, a: 1}
+  colorEmisionApagado: {r: 0, g: 0, b: 0, a: 1}
 --- !u!65 &1076192955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102482,6 +102516,13 @@ MonoBehaviour:
   - {fileID: 988793976}
   sonidoEncendido: {fileID: 8300000, guid: e07f747b74f059e488c87fa97e401077, type: 3}
   sonidoApagado: {fileID: 8300000, guid: e07f747b74f059e488c87fa97e401077, type: 3}
+  perillaInterruptor: {fileID: 0}
+  rotacionApagado: {x: -105, y: 0, z: 0}
+  rotacionEncendido: {x: -75, y: 0, z: 0}
+  farolRenderer: {fileID: 0}
+  indiceMaterial: 0
+  colorEmisionPrendido: {r: 1, g: 1, b: 1, a: 1}
+  colorEmisionApagado: {r: 0, g: 0, b: 0, a: 1}
 --- !u!65 &1130648193
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -104082,6 +104123,13 @@ MonoBehaviour:
   objetosQueFlotan: []
   sonidoEncendido: {fileID: 0}
   sonidoApagado: {fileID: 0}
+  perillaInterruptor: {fileID: 0}
+  rotacionApagado: {x: -105, y: 0, z: 0}
+  rotacionEncendido: {x: -75, y: 0, z: 0}
+  farolRenderer: {fileID: 0}
+  indiceMaterial: 0
+  colorEmisionPrendido: {r: 1, g: 1, b: 1, a: 1}
+  colorEmisionApagado: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &1216756218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113398,6 +113446,13 @@ MonoBehaviour:
   objetosQueFlotan: []
   sonidoEncendido: {fileID: 0}
   sonidoApagado: {fileID: 0}
+  perillaInterruptor: {fileID: 0}
+  rotacionApagado: {x: -105, y: 0, z: 0}
+  rotacionEncendido: {x: -75, y: 0, z: 0}
+  farolRenderer: {fileID: 0}
+  indiceMaterial: 0
+  colorEmisionPrendido: {r: 1, g: 1, b: 1, a: 1}
+  colorEmisionApagado: {r: 0, g: 0, b: 0, a: 1}
 --- !u!65 &1454940760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -120004,7 +120059,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 479828367}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 01bb2e6b9d58dd442b8eb7d9aecadae3,
         type: 3}
@@ -120024,17 +120079,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 01bb2e6b9d58dd442b8eb7d9aecadae3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.813
+      value: -40.567135
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 01bb2e6b9d58dd442b8eb7d9aecadae3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.222
+      value: 3.1437955
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 01bb2e6b9d58dd442b8eb7d9aecadae3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.9773
+      value: -1.2286859
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 01bb2e6b9d58dd442b8eb7d9aecadae3,
         type: 3}
@@ -132655,4 +132710,3 @@ SceneRoots:
   - {fileID: 1844557161}
   - {fileID: 432884888}
   - {fileID: 2046478770}
-  - {fileID: 1662983340}
