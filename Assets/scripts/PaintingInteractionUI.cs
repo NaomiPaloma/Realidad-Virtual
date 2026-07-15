@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// Colocar este script en la cámara del jugador (o en un objeto vacío
@@ -19,11 +19,11 @@ public class PaintingInteractionUI : MonoBehaviour
     [Tooltip("Panel (GameObject) que contiene el fondo + textos, ubicado abajo de la pantalla")]
     public GameObject panelInfo;
 
-    [Tooltip("Texto UI para el título del cuadro")]
-    public Text textoTitulo;
+    [Tooltip("Texto UI (TextMeshPro) para el título del cuadro")]
+    public TMP_Text textoTitulo;
 
-    [Tooltip("Texto UI para la historia del cuadro")]
-    public Text textoHistoria;
+    [Tooltip("Texto UI (TextMeshPro) para la historia del cuadro")]
+    public TMP_Text textoHistoria;
 
     [Header("Configuración de detección")]
     [Tooltip("Distancia máxima a la que el jugador puede activar el cuadro")]
