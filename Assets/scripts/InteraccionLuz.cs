@@ -1,34 +1,44 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class InteraccionLuz : MonoBehaviour
 {
     [Header("Luces del cuarto")]
-    public Light[] luces = new Light[6]; //[cite: 8]
+    public Light[] luces = new Light[6];
 
     [Header("Objetos Mágicos")]
-    public ObjetoFlotante[] objetosQueFlotan; // Lista de los objetos que van a levitar
+    public ObjetoFlotante[] objetosQueFlotan;
 
-    // Ahora es public para que el SistemaAgarre lo pueda ejecutar al mirarlo[cite: 8]
+    [Header("Sonidos del interruptor")]
+    public AudioClip sonidoEncendido;
+    public AudioClip sonidoApagado;
+
+    AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    // Ahora es public para que el SistemaAgarre lo pueda ejecutar al mirarlo
     public void ToggleTodasLasLuces()
     {
-        bool algunaEncendida = false; //[cite: 8]
-
-        foreach (Light luz in luces) //[cite: 8]
+        bool algunaEncendida = false;
+        foreach (Light luz in luces)
         {
-            if (luz != null && luz.enabled) //[cite: 8]
+            if (luz != null && luz.enabled)
             {
-                algunaEncendida = true; //[cite: 8]
-                break; //[cite: 8]
+                algunaEncendida = true;
+                break;
             }
         }
 
         // Determinamos el nuevo estado (si había alguna prendida, las apagamos. Si no, las prendemos)
         bool nuevoEstado = !algunaEncendida;
-
-        foreach (Light luz in luces) //[cite: 8]
+        foreach (Light luz in luces)
         {
-            if (luz != null) //[cite: 8]
-                luz.enabled = nuevoEstado; //[cite: 8]
+            if (luz != null)
+                luz.enabled = nuevoEstado;
         }
 
         // Le avisamos a todos los objetos mágicos que empiecen a flotar (o dejen de hacerlo)
@@ -39,5 +49,16 @@ public class InteraccionLuz : MonoBehaviour
                 obj.CambiarEstadoFlotacion(nuevoEstado);
             }
         }
+
+        // Reproducimos el sonido correspondiente según el nuevo estado
+        ReproducirSonido(nuevoEstado);
+    }
+
+    void ReproducirSonido(bool encendiendo)
+    {
+        AudioClip clip = encendiendo ? sonidoEncendido : sonidoApagado;
+
+        if (audioSource != null && clip != null)
+            audioSource.PlayOneShot(clip);
     }
 }
