@@ -55,7 +55,7 @@ public class FeedbackInteraccion : MonoBehaviour
                 if (textoInteraccionUI != null)
                 {
                     // Chequeamos si el panel del cuadro está abierto en este momento
-                    bool leyendoCuadro = PaintingInteractionUI.Instancia != null && PaintingInteractionUI.Instancia.panelInfo.activeSelf;
+                    bool leyendoCuadro = PaintingInteractionUI.Instancia != null && PaintingInteractionUI.Instancia.EstaLeyendo();
 
                     if (leyendoCuadro)
                     {
