@@ -95664,6 +95664,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 247.37086, y: 203.78685, z: 189.99466}
   m_Center: {x: -10.698137, y: 101.79565, z: 50.028645}
+--- !u!64 &984212470
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984212451}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: eba64947a58709845abd726644ce64f2, type: 3}
 --- !u!1001 &986666811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96029,6 +96051,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 984212466}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: eba64947a58709845abd726644ce64f2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 984212470}
   m_SourcePrefab: {fileID: 100100000, guid: eba64947a58709845abd726644ce64f2, type: 3}
 --- !u!1 &991532566 stripped
 GameObject:
@@ -152811,8 +152837,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
