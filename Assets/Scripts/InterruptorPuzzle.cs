@@ -2,28 +2,21 @@ using UnityEngine;
 
 public class InterruptorPuzzle : MonoBehaviour
 {
-    [Header("Referencias")]
-    public Light luzAsociada; // La lucecita que prende este botón
-    public ControladorPuzzle controlador; // El cerebro del puzzle
-
+    public Light luzAsociada;
+    public ControladorPuzzle controlador;
     private bool encendido = false;
     private bool bloqueado = false;
 
-    void Start()
-    {
-        Apagar(); // Nos aseguramos que arranquen apagadas
-    }
-
-    // El jugador llama a esto con la letra 'E'
     public void Interactuar()
     {
-        if (bloqueado || encendido) return; // Si ya está prendido, ignoramos el click
+        if (bloqueado) return;
 
-        encendido = true;
-        if (luzAsociada != null) luzAsociada.enabled = true;
+        // Alternar estado SIEMPRE
+        encendido = !encendido;
+        if (luzAsociada != null) luzAsociada.enabled = encendido;
 
-        // Le avisa al cerebro central que tocaron este botón
-        if (controlador != null) controlador.RecibirInputLuz(this);
+        // Avisar al controlador
+        if (controlador != null) controlador.RecibirInputLuz(this, encendido);
     }
 
     public void Apagar()
@@ -34,6 +27,6 @@ public class InterruptorPuzzle : MonoBehaviour
 
     public void BloquearFinal()
     {
-        bloqueado = true; // Para que no jueguen con las luces una vez ganado
+        bloqueado = true;
     }
 }
